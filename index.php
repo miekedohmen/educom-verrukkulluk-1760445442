@@ -1,15 +1,24 @@
 <?php
 
-require_once("lib/database.php");
-require_once("lib/artikel.php");
+ini_set('display_errors', 1); 
+ini_set('display_startup_errors', 1); 
+error_reporting(E_ALL);
 
-/// INIT
+require_once("./lib/database.php");
+require_once("./lib/products.php");
+require_once("./lib/user.php");
+require_once("./lib/kitch")
+
+// /// INIT
 $db = new database();
-$art = new artikel($db->getConnection());
-
+$prod = new product(connection: $db->getConnection());
+$user = new USER($db->getConnection());
 
 /// VERWERK 
-$data = $art->selecteerArtikel(8);
+$data = $prod->selecteerProducts(products_id: 4);
+$userData= $user->selecteerUser(3);
 
 /// RETURN
-var_dump($data);
+echo '<pre>';
+print_r($data);
+echo '</pre>';
