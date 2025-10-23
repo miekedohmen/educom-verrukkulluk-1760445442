@@ -8,11 +8,11 @@ class kitchentype {
         $this->connection = $connection;
     }
   
-    public function selecteerKitchentype($recipe_id)  {
+    public function selecteerKitchentype($kitchentype_id)  {
 
-        $sql = "select * from kitchentype where recipe_id = $recipe_id";
+        $sql = "select * from kitchen_type where id = $kitchentype_id";
         
-       $result = mysqli_query($this->connection, query: $sql);
+       $result = mysqli_query($this->connection,$sql);
 
         return mysqli_fetch_array($result, MYSQLI_ASSOC);
     
