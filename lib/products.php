@@ -1,6 +1,6 @@
 <?php
 
-class product {
+class products {
 
     private $connection;
 

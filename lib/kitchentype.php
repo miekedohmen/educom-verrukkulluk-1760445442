@@ -8,15 +8,11 @@ class kitchentype {
         $this->connection = $connection;
     }
   
-    public function selecteerKitchentype($products_id) {
+    public function selecteerKitchentype($recipe_id)  {
 
-        $sql = "select * from products where id = $products_id";
+        $sql = "select * from kitchentype where recipe_id = $recipe_id";
         
-       $result = mysqli_query(mysql: $this->connection, query: $sql);
-
-       if (!$result) {
-        die("Query failed:". mysqli_error ($this->connection));
-       }   
+       $result = mysqli_query($this->connection, query: $sql);
 
         return mysqli_fetch_array($result, MYSQLI_ASSOC);
     
