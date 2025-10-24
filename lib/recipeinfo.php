@@ -8,6 +8,29 @@ class recipeinfo{
         $this->connection = $connection;
     } 
   
+    public function addToFavorites($recipe_id, $user_id) {
+
+        $sql = "INSERT INTO recipe_info (record_type, user_id, recipe_id, added_date)
+        VALUES ('F', $user_id, $recipe_id, NOW())";
+
+        if (mysqli_query($this->connection,$sql)) {
+            return "Recipe added to favorites!";
+        } else {
+            return "Error" . mysqli_error($this->connection);
+        }
+        }
+
+    public function deleteFavorites($recipe_id, $user_id) {
+
+    $sql = "DELETE FROM recipe_info WHERE recipe_id = $recipe_id AND user_id = $user_id AND record_type = 'F'";
+
+        if (mysqli_query($this->connection,$sql)) {
+            return "Recipe deleted from favorites!";
+        } else {
+            return "Error" . mysqli_error($this->connection);
+        }
+        }
+
     public function selecteerRecipeinfo($recipe_id, $record_type)
     {
         $sql = "select * from recipe_info where recipe_id = $recipe_id AND record_type = '$record_type'";

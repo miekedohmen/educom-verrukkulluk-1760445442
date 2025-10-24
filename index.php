@@ -26,6 +26,7 @@ $kitchentypeData = $kitchentype->selecteerKitchentype(3);
 $ingredientsData= $ingredients->selecteerIngredients(3);
 $productsData = $prod->selecteerProducts(3);
 $recipeinfoData = $recipeinfo->selecteerRecipeinfo(9,'B');
+$nonihelpt = $recipeinfo->deleteFavorites(9, 3);
 
 
 /// RETURN
@@ -39,3 +40,4 @@ echo "<br><br>ingredientData:<br>";
 print_r($ingredientsData);
 echo "<br><br>recipeinfoData:<br>";
 print_r($recipeinfoData);
+
