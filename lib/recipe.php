@@ -58,6 +58,33 @@ public function __construct(mysqli $connection) {
         return $ingredients;
     }
 
+        public function selecteerWaardering($recipe_id, $user_id) {
+
+            $sql = "SELECT * FROM recipe_info WHERE recipe_id = $recipe_id AND user_id = $user_id AND record_type = 'W'";
+
+            $result = mysqli_query($this->connection, query: $sql);
+        }
+
+        public function selecteerStappen($recipe_id) {
+            
+            $sql = "SELECT FROM recipe_info WHERE recipe_id = $recipe_id AND record_type= 'B' ";
+            
+            $result = mysqli_query($this->connection, query: $sql);
+
+            if (!$result) {
+                die("Query failed:" . mysqli_error($this->connection));
+            }
+
+            return mysqli_fetch_array($result, MYSQLI_ASSOC);
+        }
+
+        public function selecteerOpmerkingen($recipe_id, $user_id) {
+            
+            $sql = "SELECT FROM recipe_info WHERE recipe_id = $recipe_id AND user_id = $user_id AND record_type= 'O'";
+
+            $result = mysqli_query(mysql: $this->connection, query: $sql);
+        }
+
        public function selecteerKitchentype($kitchentype_id)  {
 
         $sql = "select * from kitchen_type where id = $kitchentype_id";

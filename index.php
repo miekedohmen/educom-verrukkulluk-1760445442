@@ -19,7 +19,7 @@ $user = new USER($db->getConnection());
 $kitchentype = new kitchentype($db->getConnection());
 $ingredients = new ingredients(connection : $db->getConnection());
 $recipeinfo = new recipeinfo(connection: $db->getConnection());
-$recipe = new recipe ($db->getConnection());
+$recipeData = new recipe ($db->getConnection());
 
 /// VERWERK 
 $data = $prod->selecteerProducts(products_id: 4);
@@ -29,7 +29,9 @@ $ingredientsData= $ingredients->selecteerIngredients(3);
 $productsData = $prod->selecteerProducts(3);
 $recipeinfoData = $recipeinfo->selecteerRecipeinfo(9,'B');
 $nonihelpt = $recipeinfo->deleteFavorites(9, 3);
-$recipeData = $recipe-> selectRecipe();
+$waarderingData = $recipeData->selecteerWaardering(9,3);
+$stappenData = $recipeData->selecteerStappen(9,3);
+$opmerkingenData = $recipeData->selecteerOpmerkingen(9,3);
 
 
 /// RETURN
@@ -45,4 +47,10 @@ echo "<br><br>recipeinfoData:<br>";
 print_r($recipeinfoData);
 echo "<br><br>recipeData";
 print_r($recipeData);
+echo "<br><br>waarderingData:<br>";
+print_r($waarderingData);
+echo "<br><br>stappenData:<br>";
+print_r($stappenData);
+echo "<br><br>opmerkingenData<br>";
+print_r($opmerkingenData);
 
