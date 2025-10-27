@@ -1,6 +1,6 @@
 <?php
 
-class USER  {
+class user  {
     private $connection;
 
     public function __construct(mysqli $connection) {

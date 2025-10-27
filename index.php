@@ -10,6 +10,7 @@ require_once("./lib/user.php");
 require_once("./lib/kitchentype.php");
 require_once("./lib/ingredients.php");
 require_once("./lib/recipeinfo.php");
+require_once("./lib/recipe.php");
 
 // /// INIT
 $db = new database();
@@ -18,6 +19,7 @@ $user = new USER($db->getConnection());
 $kitchentype = new kitchentype($db->getConnection());
 $ingredients = new ingredients(connection : $db->getConnection());
 $recipeinfo = new recipeinfo(connection: $db->getConnection());
+$recipe = new recipe ($db->getConnection());
 
 /// VERWERK 
 $data = $prod->selecteerProducts(products_id: 4);
@@ -27,6 +29,7 @@ $ingredientsData= $ingredients->selecteerIngredients(3);
 $productsData = $prod->selecteerProducts(3);
 $recipeinfoData = $recipeinfo->selecteerRecipeinfo(9,'B');
 $nonihelpt = $recipeinfo->deleteFavorites(9, 3);
+$recipeData = $recipe-> selectRecipe();
 
 
 /// RETURN
@@ -40,4 +43,6 @@ echo "<br><br>ingredientData:<br>";
 print_r($ingredientsData);
 echo "<br><br>recipeinfoData:<br>";
 print_r($recipeinfoData);
+echo "<br><br>recipeData";
+print_r($recipeData);
 
