@@ -18,7 +18,7 @@ $recipeData = new recipe ($db->getConnection());
 
 
 /// VERWERK 
-$recipes = $recipeData->selectRecipe (6);
+$recipes = $recipeData->selectRecipe ();
 
 /// RETURN
 echo "<pre>";

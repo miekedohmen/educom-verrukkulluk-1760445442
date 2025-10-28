@@ -3,9 +3,11 @@
 class recipeinfo{
 
     private $connection;
-    private $prod;
+    private $user;
     public function __construct($connection) {
         $this->connection = $connection;
+        $this->user = new user($connection);
+
     } 
   
     public function deleteFavorites($recipe_id, $user_id) {
@@ -31,6 +33,8 @@ class recipeinfo{
         
         $result = mysqli_query($this->connection, $sql);
 
+        $recipeinfo = [];
+
        while($row = mysqli_fetch_assoc ($result)) {
         
             if ($row['record_type'] == 'F' || $row['record_type'] == 'O')
@@ -42,8 +46,11 @@ class recipeinfo{
                     'record-type'=>$row['record_type'],
                     'user_id'=>$row['user_id'],
                     'numeric_field'=>$row['numeric_field'],
-                    'text_field'=>$row['text_field']
-                ]; $user; 
+                    'text_field'=>$row['text_field'],
+                    'first_name'=> $user['first_name'],
+                    'last_name'=> $user['last_name'],
+                    'recipe_id'=> $recipe_id,
+                ]; 
             }
             
             else {
@@ -52,7 +59,8 @@ class recipeinfo{
                     'record-type'=>$row['record_type'],
                     'user_id'=>$row['user_id'],
                     'numeric_field'=>$row['numeric_field'],
-                    'text_field'=>$row['text_field']
+                    'text_field'=>$row['text_field'],
+                    'recipe_id'=> $recipe_id,
                 ];
             }
         }
@@ -62,7 +70,7 @@ class recipeinfo{
     }
 
      private function selecteerUser ($user_id) {
-        $user = $this->prod->selecteerUser($user_id);
+        $user = $this->user->selecteerUser($user_id);
         return $user;
 
     }
