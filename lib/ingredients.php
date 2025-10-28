@@ -11,7 +11,7 @@ class Ingredients {
   
     public function selecteerIngredients($recipe_id) {
 
-        $sql = "select * from ingredients where id = $recipe_id";
+        $sql = "select * from ingredients where recipe_id = $recipe_id";
         
        $result = mysqli_query($this-> connection, $sql);
 
@@ -24,9 +24,13 @@ class Ingredients {
             "recipe_id"=> $row["id"], 
             "products_id"=> $row["product_id"],
             "amount"=> $row["amount"],
-            "products_info"=> $product
+            "products_name"=> $product["name"],
+            "product_description" => $product["description"],
+            "product_amount" => $product["amount"],
+            "packaging_amount" => $product["packaging_amount"],
+            "price_amount" => $product["price_amount"],
+            "calories_unit" => $product["calories_unit"],
         ] ;
-
         };
 
         return $ingredients;

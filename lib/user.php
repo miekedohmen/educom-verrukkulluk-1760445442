@@ -12,10 +12,6 @@ class user  {
 
         $result = mysqli_query($this->connection, $sql);
 
-        if (!$result) { 
-            die ("Query failed: " . mysqli_error ($this->connection));
-        }
-
        return mysqli_fetch_array ($result, MYSQLI_ASSOC);
 
     }

@@ -1,4 +1,4 @@
-<?php
+"<?php
 
 class products {
 
@@ -13,10 +13,6 @@ class products {
         $sql = "select * from products where id = $products_id";
         
        $result = mysqli_query(mysql: $this->connection, query: $sql);
-
-       if (!$result) {
-        die("Query failed:". mysqli_error ($this->connection));
-       }   
 
         return mysqli_fetch_array($result, MYSQLI_ASSOC);
     
