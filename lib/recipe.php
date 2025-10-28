@@ -52,24 +52,26 @@ public function __construct(mysqli $connection) {
     }
 
     private function selectRate ($recipe_id){
-        $sql = "SELECT * FROM recipe_info WHERE recipe_id = $recipe_id AND user_id = $user_id AND record_type = 'W'";
-        $result = mysqli_query($this->connection, $sql);
+        $recipeInfo = new $recipeInfo($this->connection);
+        $rate = $recipeInfo->selecteerRecipeInfo($recipe_id,'W');
+        return $rate;
     }
 
     private function selectComments ($recipe_id, $user_id) {
-        $sql = "SELECT * FROM recipe_info WHERE recipe_id = $recipe_id AND user_id = $user_id AND record_type= 'O'";
-        $result = $result->selectComments($recipe_id, $user_id);
+        $recipeInfo = new $recipeInfo($this->connection);
+        $comments = $recipeInfo->selecteerRecipeInfo($recipe_id,'O');
+        return $comments;
     }
 
     private function selecteerStappen($recipe_id){
-        $selecteerStappen = new Steps($this->connection);
-        $stappen = $stappen->selecteerStappen($recipe_id);
-        return $stappen;
+       $recipeInfo = new $recipeInfo($this->connection);
+       $stappen = $recipeInfo->selecteerRecipeInfo($recipe_id,'B');
+       return $stappen;
     }
 
 
     private function selecteerKitchentype ($kitchentype_id) {
-        $selecteerKitchenType = new selecteerKitchenType($this->connection);
+        $selecteerKitchenType = new kitchenType ($this->connection);
         $kitchenType->kitchen_type->selecteerKitchenType($kitchentype_id);
         return $kitchenType;
     }
